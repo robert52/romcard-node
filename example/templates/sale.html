@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Payment - {{ title }}</title>
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+        <form name="frmPaymentRedirect" method="post" action="{{ redirectUrl }}">
+            <input type="hidden" name="ORDER" value="{{ data.ORDER }}"/>
+            <input type="hidden" name="AMOUNT" value="{{ data.AMOUNT }}"/>
+            <input type="hidden" name="CURRENCY" value="{{ data.CURRENCY }}"/>
+            <input type="hidden" name="RRN" value="{{ data.RRN }}"/>
+            <input type="hidden" name="INT_REF" value="{{ data.INT_REF }}"/>
+            <input type="hidden" name="TRTYPE" value="{{ data.TRTYPE }}"/>
+            <input type="hidden" name="TERMINAL" value="{{ data.TERMINAL }}"/>
+            <input type="hidden" name="TIMESTAMP" value="{{ data.TIMESTAMP }}"/>
+            <input type="hidden" name="NONCE" value="{{ data.NONCE }}"/>
+            <input type="hidden" name="BACKREF" value="{{ data.BACKREF }}"/>
+            <input type="hidden" name="P_SIGN" value="{{ data.P_SIGN }}"/>
+            <p>
+                You will be redirected to a secure page
+            </p>
+            <p>
+                Click to continue <input type="submit" value="Submit">
+            </p>
+        </form>
+    </body>
+</html>

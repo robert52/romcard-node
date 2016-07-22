@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Payment - {{ title }}</title>
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+        <form name="frmPaymentRedirect" method="post" action="{{ redirectUrl }}">
+            <input type="hidden" name="AMOUNT" value="{{ data.AMOUNT }}"/>
+            <input type="hidden" name="CURRENCY" value="{{ data.CURRENCY }}"/>
+            <input type="hidden" name="ORDER" value="{{ data.ORDER }}"/>
+            <input type="hidden" name="DESC" value="{{ data.DESC }}"/>
+            <input type="hidden" name="MERCH_NAME" value="{{ data.MERCH_NAME }}"/>
+            <input type="hidden" name="MERCH_URL" value="{{ data.MERCH_URL }}"/>
+            <input type="hidden" name="MERCHANT" value="{{ data.MERCHANT }}"/>
+            <input type="hidden" name="TERMINAL" value="{{ data.TERMINAL }}"/>
+            <input type="hidden" name="EMAIL" value="{{ data.EMAIL }}"/>
+            <input type="hidden" name="TRTYPE" value="{{ data.TRTYPE }}"/>
+            <input type="hidden" name="COUNTRY" value="{{ data.COUNTRY }}"/>
+            <input type="hidden" name="MERCH_GMT" value="{{ data.MERCH_GMT }}"/>
+            <input type="hidden" name="TIMESTAMP" value="{{ data.TIMESTAMP }}"/>
+            <input type="hidden" name="NONCE" value="{{ data.NONCE }}"/>
+            <input type="hidden" name="BACKREF" value="{{ data.BACKREF }}"/>
+            <input type="hidden" name="P_SIGN" value="{{ data.P_SIGN }}"/>
+            <p>
+                You will be redirected to a secure page
+            </p>
+            <p>
+                Click to continue <input type="submit" value="Submit">
+            </p>
+        </form>
+    </body>
+</html>
