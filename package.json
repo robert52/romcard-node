@@ -1,9 +1,9 @@
 {
   "name": "romcard-node",
   "version": "1.0.0",
-  "description": "",
+  "description": "Romcard payment gateway integration module",
   "main": "index.js",
-  "author": "",
+  "author": "Robert Richter <robi.richter@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "body-parser": "^1.15.2",
@@ -13,8 +13,6 @@
   "dependencies": {
     "bluebird": "^3.4.1",
     "lazy.js": "^0.4.2",
-    "lodash": "^4.13.1",
-    "moment": "^2.14.1",
-    "request": "^2.72.0"
+    "moment": "^2.14.1"
   }
 }
