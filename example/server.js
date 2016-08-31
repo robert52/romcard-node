@@ -8,13 +8,13 @@ const XError = require('../lib/XError');
 
 // Init gateway object with the required parameters
 const gateway = new Gateway({
-  merchantName: '< merchant name from account config >',
-  merchantUrl: '< merchant URL from account config >',
-  terminalId: '< merchant terminal ID from account config >',
-  email: '< merchant contact email from account config >',
-  secretKey: '< merchant secret key from account config >',
-  sandbox: true,
-  callbackUrl: '< your website callback URL >'
+  merchantName: 'PONY CAR SHARING',
+  merchantUrl: 'http://localhost',
+  terminalId: '60000863',
+  email: 'iulian@mediadrome.at',
+  secretKey: '17E308CAE9EE71BB87671128F488097B',
+  sandbox: false,
+  callbackUrl: 'http://localhost/callback'
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,11 +40,13 @@ nunjucks.setup({
 
 app.get('/', (req, res) => {
 
-  gateway.prepareAuthRequestData({
+  gateway.prepareAuthRecurringData({
     amount: '1.00',
     currency: 'RON',
     orderId: '20160720123',
-    description: 'Testing'
+    description: 'Testing',
+    recurFreq: '1',
+    recurExp: '20161231'
   })
     .then(({data, redirectUrl}) => {
       return res.render('index', {
@@ -54,6 +56,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/callback', (req, res) => {
+  console.log(req.query);
+
   gateway.parseGatewayResponse(req.query)
     .then((gatewayResponse) => {
       console.log(gatewayResponse);
@@ -77,6 +81,11 @@ app.get('/callback', (req, res) => {
                 return res.sendStatus(500);
               });
           }
+
+          if (parseInt(gatewayResponse.status) === constants.STATUS_PROCESSING_ERROR) {
+            return res.sendStatus(500);
+          }
+
           break;
         case constants.TRANSACTION_TYPE_SALE:
           // handle sale
@@ -99,6 +108,6 @@ app.get('/callback', (req, res) => {
     });
 });
 
-app.listen(3001, function () {
-  console.log('Example app listening on port 3001!');
+app.listen(80, function () {
+  console.log('Example app listening on port 80!');
 });
